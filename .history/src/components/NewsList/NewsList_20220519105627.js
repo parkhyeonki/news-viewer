@@ -14,39 +14,38 @@ const NewsListBlock = styled.div`
     padding-right: 1rem;
   }
 `;
-const NewsList = ({ category }) => {
-  const [articles, setArticles] = useState(null);
+const NewsList = () => {
+  const sampleArticle = {
+    title: '제목',
+    description: '내용',
+    url: 'https://google.com',
+    urlToImage: 'https://via.placeholder.com/160',
+  };
+
+  const [article, setArticle] = useState(null);
   const [loading, setLoading] = useState(false);
 
-  useEffect(() => {
+  useEffect = () => {
     const fetchData = async () => {
       setLoading(true);
       try {
-        const query = category === 'all' ? '' : `&category=${category}`;
         const response = await axios.get(
-          `https://newsapi.org/v2/top-headlines?country=kr${query}&apiKey=05f1b59ba99c4b2cb7579cb88e16cfcd`,
+          'https://newsapi.org/v2/top-headlines?country=kr&category=business&apiKey=05f1b59ba99c4b2cb7579cb88e16cfcd',
         );
-        setArticles(response.data.articles);
       } catch (e) {
         console.log(e);
       }
-      setLoading(false);
     };
-    fetchData();
-  }, [category]);
+  };
 
-  if (loading) {
-    return <NewsListBlock>loading...</NewsListBlock>;
-  }
-
-  if (!articles) {
-    return null;
-  }
   return (
     <NewsListBlock>
-      {articles.map((article) => (
-        <NewsItem key={article.url} article={article} />
-      ))}
+      <NewsItem article={sampleArticle} />
+      <NewsItem article={sampleArticle} />
+      <NewsItem article={sampleArticle} />
+      <NewsItem article={sampleArticle} />
+      <NewsItem article={sampleArticle} />
+      <NewsItem article={sampleArticle} />
     </NewsListBlock>
   );
 };

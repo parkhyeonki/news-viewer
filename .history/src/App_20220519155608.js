@@ -4,12 +4,12 @@ import Categories from './components/Categories/Categories';
 import NewsList from './components/NewsList/NewsList';
 
 function App() {
-  const [category, setCategory] = useState('all');
-  const onSelect = useCallback((category) => setCategory(category), []);
+  // const [category, setCategory] = useState('all');
+  // const onSelect = useCallback((category) => setCategory(category), []);
   return (
     <>
-      <Categories category={category} onSelect={onSelect} />
-      <NewsList category={category} />
+      <Categories />
+      <NewsList />
     </>
   );
 }
