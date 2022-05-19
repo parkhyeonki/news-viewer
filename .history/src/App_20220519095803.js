@@ -5,13 +5,11 @@ import './App.css';
 function App() {
   const [data, setData] = useState(null);
   const onClick = async () => {
-    try {
-      const response = await axios.get(
-        'https://jsonplaceholder.typicode.com/todos/1',
-      );
-      setData(response.data);
-    } catch (e) {
-      console.log(e);
+    try{
+      const response = await axios.get('https://jsonplaceholder.typicode.com/todos/1')
+        .then((response) => {
+          setData(response.data);
+        });
     }
   };
 
