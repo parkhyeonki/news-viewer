@@ -55,7 +55,7 @@ const Category = styled(NavLink)`
     color: #495057;
   }
 
-  &.active {
+  $.active {
     font-weight: 600;
     border-bottom: 2px solid #22b8cf;
     color: #22b8cf;

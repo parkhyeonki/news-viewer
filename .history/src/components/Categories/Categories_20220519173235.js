@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { NavLink } from 'react-router-dom';
 const categories = [
   {
@@ -55,21 +55,23 @@ const Category = styled(NavLink)`
     color: #495057;
   }
 
-  &.active {
-    font-weight: 600;
-    border-bottom: 2px solid #22b8cf;
-    color: #22b8cf;
-    &:hover {
-      color: #3bc9db;
-    }
-  }
+  ${(props) =>
+    props.active &&
+    css`
+      font-weight: 600;
+      border-bottom: 2px solid #22b8cf;
+      color: #22b8cf;
+      &:hover {
+        color: #3bc9db;
+      }
+    `}
 
   & + & {
     margin-left: 1rem;
   }
 `;
 
-const Categories = () => {
+const Categories = ({ onSelect, category }) => {
   return (
     <CategoriesBlock>
       {categories.map((c) => (
