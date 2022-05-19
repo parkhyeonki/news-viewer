@@ -21,20 +21,15 @@ const NewsList = ({ category }) => {
     return axios.get(
       `https://newsapi.org/v2/top-headlines?country=kr${query}&apiKey=05f1b59ba99c4b2cb7579cb88e16cfcd`,
     );
-  }, [category]);
+  });
 
   if (loading) {
     return <NewsListBlock>loading...</NewsListBlock>;
   }
 
-  if (!response) {
+  if (!articles) {
     return null;
   }
-
-  if (error) {
-    return <NewsListBlock>에러 발생!</NewsListBlock>;
-  }
-  const { articles } = response.data;
   return (
     <NewsListBlock>
       {articles.map((article) => (

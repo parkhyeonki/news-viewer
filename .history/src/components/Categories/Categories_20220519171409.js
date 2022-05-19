@@ -78,7 +78,7 @@ const Categories = ({ onSelect, category }) => {
         <Category
           key={c.name}
           className={({ isActive }) => (isActive ? 'active' : undefined)}
-          to={c.name === 'all' ? '/' : `/${c.name}`}
+          onClick={() => onSelect(c.name)}
         >
           {c.text}
         </Category>
